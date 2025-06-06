@@ -1,0 +1,12 @@
+grpc:
+  port: "8080"
+  auth_service_address: "auth-service:8080"
+
+s3:
+  bucket: "kdt"
+  region: "ru-central1"
+  endpoint: "https://storage.yandexcloud.net"
+
+logging:
+  isProduction: ${APP_LOGGIN_IS_PRODUCTION}
+  vectorURL: "http://vector:9880"
