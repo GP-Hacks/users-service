@@ -56,7 +56,12 @@ func (c *UserController) GetMe(ctx context.Context, req *desc.GetMeRequest) (*de
 }
 
 func (c *UserController) Update(ctx context.Context, req *desc.UpdateUserRequest) (*emptypb.Empty, error) {
-	return nil, status.Error(codes.Internal, "Not implemented")
+	return nil, c.usersService.Update(ctx, req.Token, &models.User{
+		FirstName:   req.User.FirstName,
+		LastName:    req.User.LastName,
+		Surname:     req.User.Surname,
+		DateOfBirth: req.User.DateOfBirth.AsTime(),
+	})
 }
 
 func (c *UserController) Create(ctx context.Context, req *desc.CreateRequest) (*emptypb.Empty, error) {
