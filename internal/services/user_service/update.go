@@ -12,25 +12,8 @@ func (s *UserService) Update(ctx context.Context, token string, upd *models.User
 		return err
 	}
 
-	usr, err := s.userRepository.GetByID(ctx, id)
-	if err != nil {
-		return err
-	}
-
-	if upd.FirstName != "" {
-		usr.FirstName = upd.FirstName
-	}
-	if upd.LastName != "" {
-		usr.LastName = upd.LastName
-	}
-	if upd.Surname != "" {
-		usr.Surname = upd.Surname
-	}
-	if !upd.DateOfBirth.IsZero() {
-		usr.DateOfBirth = upd.DateOfBirth
-	}
-
-	if err := s.userRepository.Update(ctx, usr); err != nil {
+	upd.ID = id
+	if err := s.userRepository.Update(ctx, upd); err != nil {
 		return err
 	}
 
