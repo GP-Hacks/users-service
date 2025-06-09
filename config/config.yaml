@@ -9,4 +9,4 @@ s3:
 
 logging:
   isProduction: ${APP_LOGGIN_IS_PRODUCTION}
-  vectorURL: "http://vector:9880"
+  vectorURL: "http://infrastructure_vector_1:9880"
